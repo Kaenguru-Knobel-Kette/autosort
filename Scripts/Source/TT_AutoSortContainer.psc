@@ -3,9 +3,7 @@ ScriptName TT_AutoSortContainer Extends ObjectReference
 
 FormList Property ListOre Auto
 
-Keyword Property ArmorHeavy Auto
 Keyword Property ArmorJewelry Auto
-Keyword Property ArmorLight Auto
 Keyword Property ArmorShield Auto
 Keyword Property VendorItemAnimalHide Auto
 Keyword Property VendorItemGem Auto
@@ -49,9 +47,9 @@ Event OnItemAdded(Form akBaseItem, Int aiItemCount, ObjectReference akItemRefere
 			SortItem(akBaseItem, aiItemCount, ContainerJewlery)
 		ElseIf (akBaseItem.HasKeyword(ArmorShield))
 			SortItem(akBaseItem, aiItemCount, ContainerShield)
-		ElseIf (akBaseItem.HasKeyword(ArmorHeavy))
+		ElseIf ((akBaseItem As Armor).GetWeightClass() == 1)
 			SortItem(akBaseItem, aiItemCount, ContainerHeavyArmor)
-		ElseIf (akBaseItem.HasKeyword(ArmorLight))
+		ElseIf ((akBaseItem As Armor).GetWeightClass() == 0)
 			SortItem(akBaseItem, aiItemCount, ContainerLightArmor)
 		Else
 			SortItem(akBaseItem, aiItemCount, ContainerClothing)
