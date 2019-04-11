@@ -15,9 +15,14 @@ Event OnActivate(ObjectReference akActivator)
 			Containers[i].RemoveAllItems(akActivator)
 			i += 1
 		Endwhile
-		While (IsFurnitureInUse())
-			Utility.Wait(1.0)
-		EndWhile
-		(akActivator As Actor).RemoveSpell(CraftingSpell)
+		RegisterForSingleUpdate(1.0)
+	EndIf
+EndEvent
+
+Event OnUpdate()
+	If (IsFurnitureInUse())
+		RegisterForSingleUpdate(1.0)
+	Else
+		Game.GetPlayer().RemoveSpell(CraftingSpell)
 	EndIf
 EndEvent
