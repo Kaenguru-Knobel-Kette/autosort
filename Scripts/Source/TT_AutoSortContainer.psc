@@ -10,8 +10,6 @@ Keyword Property ArmorShield Auto
 Keyword Property VendorItemAnimalHide Auto
 Keyword Property VendorItemGem Auto
 Keyword Property VendorItemOreIngot Auto
-Keyword Property VendorItemPoison Auto
-Keyword Property VendorItemPotion Auto
 Keyword Property WeapTypeStaff Auto
 Keyword Property WeapTypeBow Auto
 
@@ -37,6 +35,7 @@ ObjectReference Property ContainerPoison Auto
 ObjectReference Property ContainerPotion Auto
 ObjectReference Property ContainerScroll Auto
 ObjectReference Property ContainerShield Auto
+ObjectReference Property ContainerSpellTome Auto
 ObjectReference Property ContainerSoulgem Auto
 ObjectReference Property ContainerStaff Auto
 ObjectReference Property ContainerWeapon Auto
@@ -58,7 +57,11 @@ Event OnItemAdded(Form akBaseItem, Int aiItemCount, ObjectReference akItemRefere
 			SortItem(akBaseItem, aiItemCount, ContainerClothing)
 		EndIf		
 	ElseIf (akBaseItem As Book)
-		SortItem(akBaseItem, aiItemCount, ContainerBook)
+		If ((akBaseItem As Book).GetSpell() != None)
+			SortItem(akBaseItem, aiItemCount, ContainerSpellTome)
+		Else
+			SortItem(akBaseItem, aiItemCount, ContainerBook)
+		EndIf
 	ElseIf (akBaseItem As Ingredient)							
 		SortItem(akBaseItem, aiItemCount, ContainerIngredient)
 	ElseIf (akBaseItem As Key)
