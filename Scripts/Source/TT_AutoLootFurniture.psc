@@ -1,6 +1,8 @@
 ScriptName TT_AutoLootFurniture Extends ObjectReference
 {Automatically loot items from selected containers when the player uses this furniture.}
 
+FormList Property ListContainers Auto
+
 GlobalVariable Property AutoLootProcessCount Auto
 
 ObjectReference[] Property Containers Auto
@@ -11,9 +13,15 @@ Spell Property CraftingSpell Auto
 Event OnActivate(ObjectReference akActivator)
 	If (akActivator == Game.GetPlayer())
 		Game.DisablePlayerControls()
+		ListContainers.Revert()
+		Int i = 0
+		While (i < Containers.Length)
+			ListContainers.AddForm(Containers[i])
+			i += 1
+		Endwhile
 		(akActivator As Actor).AddSpell(CraftingSpell, False)
 		Utility.Wait(0.5)
-		Int i = 0
+		i = 0
 		While (i < Containers.Length)
 			Containers[i].RemoveAllItems(akActivator)
 			i += 1
