@@ -41,71 +41,62 @@ ObjectReference Property ContainerWeapon Auto
 
 Event OnItemAdded(Form akBaseItem, Int aiItemCount, ObjectReference akItemReference, ObjectReference akSourceContainer)
 	If (akBaseItem As Ammo)
-		SortItem(akBaseItem, aiItemCount, ContainerAmmo)
+		RemoveItem(akBaseItem, aiItemCount, True, ContainerAmmo)
 	ElseIf (akBaseItem As Armor)
 		If (akBaseItem.HasKeyword(ArmorJewelry))
-			SortItem(akBaseItem, aiItemCount, ContainerJewlery)
+			RemoveItem(akBaseItem, aiItemCount, True, ContainerJewlery)
 		ElseIf (akBaseItem.HasKeyword(ArmorShield))
-			SortItem(akBaseItem, aiItemCount, ContainerShield)
+			RemoveItem(akBaseItem, aiItemCount, True, ContainerShield)
 		ElseIf ((akBaseItem As Armor).GetWeightClass() == 1)
-			SortItem(akBaseItem, aiItemCount, ContainerHeavyArmor)
+			RemoveItem(akBaseItem, aiItemCount, True, ContainerHeavyArmor)
 		ElseIf ((akBaseItem As Armor).GetWeightClass() == 0)
-			SortItem(akBaseItem, aiItemCount, ContainerLightArmor)
+			RemoveItem(akBaseItem, aiItemCount, True, ContainerLightArmor)
 		Else
-			SortItem(akBaseItem, aiItemCount, ContainerClothing)
+			RemoveItem(akBaseItem, aiItemCount, True, ContainerClothing)
 		EndIf		
 	ElseIf (akBaseItem As Book)
 		If ((akBaseItem As Book).GetSpell() != None)
-			SortItem(akBaseItem, aiItemCount, ContainerSpellTome)
+			RemoveItem(akBaseItem, aiItemCount, True, ContainerSpellTome)
 		Else
-			SortItem(akBaseItem, aiItemCount, ContainerBook)
+			RemoveItem(akBaseItem, aiItemCount, True, ContainerBook)
 		EndIf
 	ElseIf (akBaseItem As Ingredient)							
-		SortItem(akBaseItem, aiItemCount, ContainerIngredient)
+		RemoveItem(akBaseItem, aiItemCount, True, ContainerIngredient)
 	ElseIf (akBaseItem As Key)
-		SortItem(akBaseItem, aiItemCount, ContainerKeys)
+		RemoveItem(akBaseItem, aiItemCount, True, ContainerKeys)
 	ElseIf (akBaseItem As Potion)
 		If ((akBaseItem As Potion).IsFood())				
-			SortItem(akBaseItem, aiItemCount, ContainerFood)
+			RemoveItem(akBaseItem, aiItemCount, True, ContainerFood)
 		ElseIf ((akBaseItem As Potion).IsPoison())
-			SortItem(akBaseItem, aiItemCount, ContainerPoison)
+			RemoveItem(akBaseItem, aiItemCount, True, ContainerPoison)
 		Else
-			SortItem(akBaseItem, aiItemCount, ContainerPotion)
+			RemoveItem(akBaseItem, aiItemCount, True, ContainerPotion)
 		EndIf
 	ElseIf (akBaseItem As SoulGem)
-		SortItem(akBaseItem, aiItemCount, ContainerSoulgem)
+		RemoveItem(akBaseItem, aiItemCount, True, ContainerSoulgem)
 	ElseIf (akBaseItem As Scroll)
-		SortItem(akBaseItem, aiItemCount, ContainerScroll)
+		RemoveItem(akBaseItem, aiItemCount, True, ContainerScroll)
 	ElseIf (akBaseItem As Weapon)
 		If (akBaseItem.HasKeyword(WeapTypeBow))
-			SortItem(akBaseItem, aiItemCount, ContainerBow)
+			RemoveItem(akBaseItem, aiItemCount, True, ContainerBow)
 		ElseIf (akBaseItem.HasKeyword(WeapTypeStaff))
-			SortItem(akBaseItem, aiItemCount, ContainerStaff)
+			RemoveItem(akBaseItem, aiItemCount, True, ContainerStaff)
 		Else
-			SortItem(akBaseItem, aiItemCount, ContainerWeapon)
+			RemoveItem(akBaseItem, aiItemCount, True, ContainerWeapon)
 		EndIf
 	ElseIf (akBaseItem.HasKeyword(VendorItemAnimalHide))
-		SortItem(akBaseItem, aiItemCount, ContainerLeather)
+		RemoveItem(akBaseItem, aiItemCount, True, ContainerLeather)
 	ElseIf (akBaseItem.HasKeyword(VendorItemGem))
-		SortItem(akBaseItem, aiItemCount, ContainerGem)
+		RemoveItem(akBaseItem, aiItemCount, True, ContainerGem)
 	ElseIf (akBaseItem.HasKeyword(VendorItemOreIngot))
 		If (ListOre != None && ListOre.HasForm(akBaseItem))
-			SortItem(akBaseItem, aiItemCount, ContainerOre)
+			RemoveItem(akBaseItem, aiItemCount, True, ContainerOre)
 		Else
-			SortItem(akBaseItem, aiItemCount, ContainerIngot)
+			RemoveItem(akBaseItem, aiItemCount, True, ContainerIngot)
 		EndIf
 	ElseIf (akBaseItem == Gold001)
-		SortItem(akBaseItem, aiItemCount, ContainerGold)
+		RemoveItem(akBaseItem, aiItemCount, True, ContainerGold)
 	Else
-		SortItem(akBaseItem, aiItemCount, ContainerMisc)
+		RemoveItem(akBaseItem, aiItemCount, True, ContainerMisc)
 	EndIf		
 EndEvent
-
-
-Function SortItem(Form akBaseItem, Int aiItemCount, ObjectReference akDestinationContainer)
-	; Time spent in menus is not counted. This allows to retrieve items that were added by mistake.
-	Utility.Wait(0.1)
-	If (akDestinationContainer != None)
-		RemoveItem(akBaseItem, aiItemCount, True, akDestinationContainer)	
-	EndIf	
-EndFunction
