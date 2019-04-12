@@ -13,6 +13,7 @@ logger.addHandler(handler)
 shutil.copytree(config.DIR_SCRIPTS, config.DIR_HEARTHFIRE_LE_SCRIPTS)
 try:
     release.build_release(dir_src=config.DIR_HEARTHFIRE_LE,
+                          trim_fomod=True,
                           warn_modgroups=False,
                           warn_version=False)
 except Exception as error:

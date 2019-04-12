@@ -18,6 +18,7 @@ try:
                           dir_ver=config.DIR_VER,
                           temp_alt=config.DIR_TEMP_ALT,
                           arch_exe=config.ARCH_EXE_LE,
+                          trim_fomod=True,
                           warn_modgroups=False)
 except Exception as error:
     logger.exception(error)
