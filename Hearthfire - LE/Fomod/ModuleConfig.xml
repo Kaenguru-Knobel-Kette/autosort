@@ -1,0 +1,24 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://qconsulting.ca/fo3/ModConfig5.0.xsd">
+	<moduleName>Hearthfire Autosort</moduleName>
+	<installSteps order="Explicit">
+		<installStep name="Hearthfire Autosort">
+			<optionalFileGroups order="Explicit">
+				<group name="Hearthfire Autosort" type="SelectAny">
+					<plugins order="Explicit">
+						<plugin name="Main File">
+							<description>
+								
+							</description>
+							<files>
+								<folder source="Hearthfire Autosort" destination=""/>
+							</files>
+							<typeDescriptor>
+								<type name="Required"/>
+							</typeDescriptor>
+						</plugin>
+					</plugins>
+				</group>
+			</optionalFileGroups>
+		</installStep>
+	</installSteps>
+</config>
