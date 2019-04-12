@@ -1,0 +1,3 @@
+- Grantyboy050 for [Immersive College of Winterhold](https://www.nexusmods.com/skyrim/mods/36849)
+- Oaristys for [Modder's Resource Pack](https://www.nexusmods.com/skyrim/mods/16525)
+- Sjogga for [Auto sorting and auto looting when crafting](https://www.nexusmods.com/skyrim/mods/24678)
