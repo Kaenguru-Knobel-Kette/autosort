@@ -13,6 +13,12 @@ DIR_HEARTHFIRE_LE = os.path.join(DIR_REPO, "Hearthfire - LE")
 DIR_HEARTHFIRE_LE_SCRIPTS = os.path.join(DIR_HEARTHFIRE_LE, "Hearthfire Autosort", "Scripts")
 """Directory where the autosort scripts for Hearthfire Autosort - Legendary Edition will be stored."""
 
+DIR_BREEZEHOME_TNF_LE = os.path.join(DIR_REPO, "Breezehome TNF - LE")
+"""Directory where all mod files for Breezehome TNF Autosort - Legendary Edition are stored."""
+
+DIR_BREEZEHOME_TNF_LE_SCRIPTS = os.path.join(DIR_BREEZEHOME_TNF_LE, "Breezehome TNF Autosort", "Scripts")
+"""Directory where the autosort scripts for Breezehome TNF Autosort - Legendary Edition will be stored."""
+
 DIR_VER = "C:\\Users\\user\\Documents\\Skyrim Tools\\Mod Organizer\\mods\\Autosort - Release"
 """Directory where version number is manually added to plugins."""
 
